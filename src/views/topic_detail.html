@@ -1,0 +1,30 @@
+{% extends "layouts/index.html" %}
+
+{% block mainbody %}
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="box">
+        <div class="box-bd">
+          {% if error %}
+            <div>你查找的内容飞到火星上去了</div>
+          {% else %}
+            <div class="topic-detail">
+              <h1>{{data.title}}</h1>
+              <div>{{data.content}}</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      {# 登录用户显示发帖 #}
+      {% if uid %}
+        <div class="box">
+          <div class="box-bd">
+            <a class="btn btn-primary btn-block" href="/topic/create">发帖</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

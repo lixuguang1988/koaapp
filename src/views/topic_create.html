@@ -1,0 +1,50 @@
+{% extends "layouts/index.html" %}
+
+{% block mainbody %}
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="box">
+        <div class="box-hd">新建话题</div>
+        <div class="box-bd">
+          <form class="topic-create-form" method="post" action="/api/topic/create">
+            <div class="form-group">
+              <label class="control-label" for="titile">标题</label>
+              <input type="text" class="form-control form-control-60"  id="title" name="title" value="" placeholder="请输入标题"  />
+              <p class="form-control-error text-danger">标题的长度必须大于0小于64个字符</p>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="category">分类</label>
+              <select name="category" class="form-control form-control-60" id="category" placeholder="请选择分类">
+                {% for category in categoryList %}
+                  <option value="{{category.id}}">{{category.title}}</opiton>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="keywords">关键字</label>
+              <input type="text" class="form-control form-control-60"  id="keywords" name="keywords" value="" placeholder="请输入标题"  />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="description">简介</label>
+              <textarea type="text" class="form-control form-control-60"  id="description" name="description" value="" placeholder="请输入简介"  ></textarea>
+            </div>            
+            <div class="form-group">
+              <label class="control-label" for="content">内容</label>
+              <textarea name="content" id="content" class="form-control" rows="10" placeholder="请填写正文"></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit" >提交</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      {# 登录用户显示发帖 #}
+      {% if uid %}
+        <a class="btn btn-primary btn-block" href="/topic/create">发帖</a>
+      {% endif %}
+    </div>
+  </div>
+  <script src="/static/js/topic.create.js"></script>
+{% endblock %} 

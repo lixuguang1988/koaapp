@@ -1,0 +1,63 @@
+{% extends "layouts/index.html" %}
+{% block mainbody %}
+  <div class="box">
+    <div class="box-hd">用户登录</div>
+    <div class="box-bd">
+      <form id="registerForm" class="form register-form" action="/api/register" method="post">
+        <div class="form-group">
+          <label class="form-label">用户名</label>
+          <input type="text" class="form-control" name="username" placeholder="请输入用户名" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">密码</label>
+          <input type="password" class="form-control" name="password" placeholder="请输入用户名" />
+        </div>
+        <div class="alert alert-danger" style="display: none"></div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="提交" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    jQuery(function(){
+      $('#registerForm').submit(function(event){
+        event.preventDefault();
+        var $this = $(this);
+        var $alert = $(this).find('.alert');
+        $alert.hide();
+        $btn.val('提交...');
+        $.ajax({
+          url: '/api/register',
+          method: 'post',
+          dataType: 'json',
+          // data: $(this).serialize()
+          data: {
+            username: $(this).find('input[name=username]').val(),
+            password: $(this).find('input[name=password]').val(),
+          }
+        })
+        .done(function(data){
+          if(!data.code){
+            $btn.val('提交');
+            $alert.html(data.message).show();
+            return false;
+          }
+          $btn.val('成功');
+          $alert.html('注册成功').toggleClass('alert-danger alert-success').show();
+          setTimeout(() => {
+            window.location = '/login';
+          }, 1000);
+        })
+        .fail(function(xhr, status, statusText){
+          console.log(xhr, status, statusText);
+        });
+      });
+
+
+    });
+  </script>
+
+{% endblock %}
+

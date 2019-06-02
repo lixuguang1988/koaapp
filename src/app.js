@@ -2,8 +2,9 @@ const serve = require('koa-static');
 const Koa = require('koa')
 const path = require('path')
 const koaBody = require('koa-body')
-const render = require('koa-ejs')
 const session = require('koa-session')
+const historyFallback = require('koa2-history-api-fallback')
+const view = require('koa-view');
 
 const dbInit = require('./db/mongoose')
 const router = require('./routes/index')
@@ -28,15 +29,8 @@ const CONFIG = {
 
 app.use(session(CONFIG, app))
 
-render(app, {
-  root: path.join(__dirname, 'views'),
-  layout: false,
-  viewExt: 'ejs',
-  cache: false,
-  debug: true
-})
-
-// app.use(view(path.resolve(__dirname, 'views')))
+// Must be used before any router is used
+app.use(view(path.resolve(__dirname, 'views')))
 
 app.use(koaBody({
   multipart: true,
@@ -48,8 +42,13 @@ app.use(koaBody({
 //public
 app.use(serve(path.resolve(__dirname, '../public')));
 
-app.use(router.routes()).use(router.allowedMethods())
-app.use(apiRouter.routes()).use(apiRouter.allowedMethods())
+//前台页面
+app.use(router.routes()).use(router.allowedMethods()) 
+//api
+app.use(apiRouter.routes()).use(apiRouter.allowedMethods()) 
+
+//这个放在路由下面
+app.use(historyFallback()) 
 
 //初始化mongoose
 dbInit()

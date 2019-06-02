@@ -1,0 +1,27 @@
+{% extends "layouts/index.html" %}
+
+{% block mainbody %}
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="home-main">
+        <div class="home-topic-list">
+          {% for topic in topics %}
+            <div class="home-topic-item">
+              <a href="/topic/{{topic.id}}" title="{{topic.title}}">{{topic.title}}</a>
+              <div class="topic-item-bar">
+                <a href="/user/{{topic.author.id}}">{{topic.author.username}}</a>
+                <span>{{topic.createAt}}</span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      {# 登录用户显示发帖 #}
+      {% if uid %}
+        <a class="btn btn-primary btn-block" href="/topic/create">发帖</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

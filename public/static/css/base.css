@@ -1,0 +1,165 @@
+body{
+  background: #f1f2f6;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: #3c4043;
+  font-size: 14px;
+  line-height: 20px;
+  min-width: 1300px;
+  font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif;
+}
+*, *::before, *::after{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a{
+  color: #3c4043;
+  text-decoration: none;
+}
+a:hover{
+  color: #0088cc;
+  text-decoration: underline;
+}
+img{
+  vertical-align: middle;
+}
+
+.navbar{
+  background: #444;
+  height: 56px;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+}
+.navbar-inner{
+  display: flex;
+  width: 85%;
+  max-width: 1400px;
+  min-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar-logo{
+  flex: none;
+  padding-top: 10px;
+}
+.navbar-logo a{
+  color: #fff;
+  font-size: 20px;
+}
+.navbar-logo a:hover{
+  text-decoration: none;
+}
+.navbar-menu{
+  flex: auto;
+  -webkit-box-flex: auto;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  margin: 0 40px;
+}
+
+.navbar-me{
+  flex: none;
+  -mx-flex: none;
+}
+
+.navbar ul{
+  line-height: 56px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navbar li{
+  display: inline-block;
+  list-style: none;
+}
+.navbar li a{
+  color: #ccc;
+  padding: 0 12px;
+}
+.navbar li a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.wrapper{
+  width: 85%;
+  max-width: 1400px;
+  min-width: 900px;
+  margin: 24px auto;
+  min-height: 400px;
+}
+
+.box{
+  margin-bottom: 24px;
+}
+.box-hd{
+  background: #f6f6f6;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+.box-bd{
+  padding: 12px;
+  background: #fff;
+}
+
+
+.home-main{
+  background: #fff;
+}
+.home-topic-item{
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px;
+}
+.topic-item-bar{
+  font-size: 13px;
+  color: #b4b4b4;
+}
+.topic-item-bar a{
+  color: #b4b4b4;
+  margin-right: 12px;
+}
+.topic-item-bar a:hover{
+  color: #0088cc;
+}
+.topic-item-bar span{
+  margin-right: 12px;
+}
+
+.register-form, .login-form{
+  max-width: 400px;
+  margin: 12px;
+}
+
+
+.topic-create-form{
+  padding: 12px;
+}
+.topic-create-form .form-control-error{
+  display: none;
+  margin-top: 12px;
+  font-size: 80%;
+}
+.form-control-60{
+  width: 60%
+}
+
+.topic-detail h1{
+  margin-top: 0;
+}
+
+
+
+
+.footer{
+  background: #fff;
+}
+.footer-inner{
+  width: 85%;
+  margin: 0 auto;
+  max-width: 1400px;
+  min-width: 900px;
+  padding: 12px 0;
+}
